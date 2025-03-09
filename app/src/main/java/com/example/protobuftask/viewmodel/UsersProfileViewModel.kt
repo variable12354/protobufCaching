@@ -20,6 +20,10 @@ class UsersProfileViewModel : ViewModel() {
         fetchUsers()
     }
 
+    /*
+    * first time fetch data throw refresh "true"
+    * if you want data from catch then pass refresh "false"
+    * */
     private fun fetchUsers(refresh: Boolean = false) = viewModelScope.launch {
         repository.getUsers(refresh).collectLatest {
             _user.value = it
